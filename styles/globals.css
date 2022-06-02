@@ -1,0 +1,35 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+@font-face {
+  font-family: 'Sofia';
+  src: url('../asset/Sofia/Sofia\ Pro\ Regular\ Az.otf');
+  src: url('../asset/Sofia/Sofia\ Pro\ Light\ Az.otf');
+  font-weight: 400;
+  font-style: normal;
+  }
+
+@font-face {
+  font-family: 'Sofia_light';
+  src: url('../asset/Sofia/Sofia\ Pro\ Light\ Az.otf');
+  font-weight: 400;
+  font-style: normal;
+    }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Sofia';
+  font-size: 14px;
+}
+
+

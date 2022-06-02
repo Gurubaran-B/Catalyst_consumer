@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  background-color: black;
+}
+
+.slider {
+  width: 100%;
+  height: 45vh;
+  margin: 0 auto;
+  position: relative;
+  overflow: visible;
+}
+
+.slide {
+  width: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 0; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 1s;
+}
+
+.dots {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:10px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.dotActive {
+  width: 28px;
+  height: 6px;
+  border-radius: 25%;
+  background-color: white;
+}

@@ -1,0 +1,167 @@
+.card {
+    width: 100%;
+    background-color: white;
+    color:black;
+    text-align: left;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+
+.title_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title_container h2 {
+    font-size: 24px;
+    margin: 10px 0px;
+}
+
+.card_title {
+    width: 70%;
+}
+
+.title_description {
+    color:#C4C4C4;
+    font-size: 14px;
+}
+
+.emoj_container {
+    background-color: #FFEEEC;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.emoj {
+    width: 30px;
+    height: 30px;
+}
+
+.modal_buttons {
+    display: flex;
+    flex-direction: column;
+    border-style: solid none none;
+    border-width: 1px;
+}
+
+.modal_buttons button {
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    margin-top: 15px;
+}
+
+.buttons_container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-style: solid none none;
+    border-width: 1px;
+    padding-top: 20px;
+    margin-top: 14px;
+}
+
+.buttons {
+    display: flex;
+    gap:30px;
+    align-items: center;
+}
+
+.buttons button {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgb(2, 2, 2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.description_container {
+    margin-top: 15px;
+    border: 1px solid rgb(2, 2, 2);
+    border-style: solid none none;
+    font-size: 13px;
+    padding: 20px 0px 20px 0px;
+
+}
+
+.description {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap:10px;
+}
+
+.description img {
+    width: 20px;
+    height: 20px;
+}
+
+.score {
+    width: 15px;
+    height: 20px;
+}
+
+.award {
+    width: 24px;
+    height: 24px;
+}
+
+.angle {
+    width: 14px;
+    height: 14px;
+}
+
+.explore { 
+    display: flex;
+    gap:5px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 35px;
+    border:none;
+    border-radius: 10px;
+    padding: 15px;
+    z-index: 1000;
+}
+
+.play {
+    width: 100%;
+    display: flex;
+    gap:5px;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    height: 35px;
+    border:none;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.explode {
+    height: 35px;
+    width: 35px;
+    border-radius: 10px;
+    background-color: black;
+    position: absolute;
+    z-index: 500;
+}
+
+.exploder {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
