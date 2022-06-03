@@ -1,0 +1,35 @@
+.container {
+    color: #B0B0B0;
+    background-color: white;
+    padding: 20px 15px;
+    border-radius: 15px;
+    background-image: url('../public/Quizcard-bg.svg');
+    background-size: cover;
+}
+
+.container h1 {
+    font-size: 24px;
+    color: black;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 25px 0px 100px 0px;
+}
+
+.option {
+    width: 75%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+    color: black;
+    background-color: white;
+    font-size: 16px;
+}

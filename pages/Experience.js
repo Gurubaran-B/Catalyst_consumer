@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css'
 import GameCard from '../Components/GameCard.js'
+import Progressbar from '../Components/Progressbar.js'
 
 export default function Experience() {
   return (
@@ -61,7 +62,9 @@ export default function Experience() {
         <GameCard />
   
       </div>
-      
+
     </motion.div>
+
+    
   );
 };
