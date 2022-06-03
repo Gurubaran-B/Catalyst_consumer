@@ -15,11 +15,6 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
-    "/Experience": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/Experience.js"
-    ],
     "/QuizPannel": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",

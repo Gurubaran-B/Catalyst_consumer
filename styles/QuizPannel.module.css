@@ -2,6 +2,7 @@
     padding: 15px 15px 0px 15px;
     background-image: url('../public/Confetti.svg');
     position: relative;
+    height: calc(100vh - 15px);
 }
 
 .progress {
@@ -13,7 +14,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: fit-content;
+    height: 80%;
 }
 
 .cardStack {
@@ -22,7 +23,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    height: inherit;
+    height: 100%;
 }
 
 
@@ -30,6 +31,8 @@
     position: absolute;
     border-radius: 15px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+    height: 100%;
+    display: hidden;
 }
 
 .closebtn {
@@ -40,6 +43,9 @@
     margin-top: 30px;
     color: white;
     height: 52px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
 }
 
 .closebtn img {
@@ -47,8 +53,6 @@
 }
 
 .close {
-    width: 15px;
-    height: 15px;
-    background-color: black;
-    border-radius: 50%;
+    width: 25px;
+    height: 25px;
 }

@@ -5,6 +5,7 @@
     border-radius: 15px;
     background-image: url('../public/Quizcard-bg.svg');
     background-size: cover;
+    height: 100%;
 }
 
 .container h1 {
@@ -18,17 +19,17 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
-    margin: 25px 0px 100px 0px;
+    margin-top: 2rem;
 }
 
 .option {
-    width: 75%;
-    height: 50px;
+    width: 100%;
+    padding: 15px 10px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 5px 10px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 4px 10px 0 rgb(178 178 178 / 20%), 0 5px 10px 0 rgb(135 135 135 / 19%);
     color: black;
     background-color: white;
     font-size: 16px;
