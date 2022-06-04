@@ -6,7 +6,7 @@ import styles from '../styles/QuizPannel.module.css';
 
 function Quiz()
 {
-    let arr = [1,2,3,4,5]
+    let arr = [1,2,3,4,5,6]
     let loc = 100 / arr.length;
 
     const [current, setCurrent] = useState(0);
@@ -24,14 +24,15 @@ function Quiz()
                     {arr.map((e, i) =>
                         { 
                             return (
-                                <AnimatePresence>
+                                <AnimatePresence key={e}>
                                     {(((i - current) >= 0) && ((i - current) < 3)) && 
                                         (<motion.div 
                                             className={styles.card}
                                             initial={{opacity:0, y:'100vh'}}
                                             animate={{opacity:1, y:0}}
-                                            exit={{rotate: 60 ,x:'-100vw', opacity:0}}
+                                            exit={{rotate: -60 ,x:'-100vw', opacity:0}}
                                             transition={{duration:0.8}}
+                                            key={e}
                                             style={{
                                                         zIndex: `${300 - ((i - current) * 100)}`, 
                                                         width: `${100 - ((i - current) * 4)}%`, 
