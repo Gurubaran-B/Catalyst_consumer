@@ -3,6 +3,7 @@
     background-image: url('../public/Confetti.svg');
     position: relative;
     height: calc(100vh - 15px);
+    width: 100%;
 }
 
 .progress {
@@ -11,10 +12,9 @@
 }
 
 .cardContainer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    height: 80%;
+    height: 85%;
+    width: 100%;
+    margin-top: -15px;
 }
 
 .cardStack {
@@ -55,4 +55,19 @@
 .close {
     width: 25px;
     height: 25px;
+}
+
+.timer {
+    color: white;
+    background-color: black;
+    padding: 20px 15px;
+    border-radius: 15px 15px 10px 10px;
+    background-size: cover;
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    font-size: 24px;
+}
+.focus {
+    height: 90%;
 }

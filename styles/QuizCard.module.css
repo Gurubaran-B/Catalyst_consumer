@@ -34,3 +34,11 @@
     background-color: white;
     font-size: 16px;
 }
+
+.correctOption {
+    background-color: #96FFD3;
+}
+
+.inCorrectOption {
+    background-color: #FF8DAF;
+}

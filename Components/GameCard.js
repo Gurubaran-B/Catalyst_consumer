@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import styles from '../styles/Card.module.css'
 
 function GameCard() {
@@ -46,10 +47,10 @@ function GameCard() {
             </div>
 
             <div>
-                <button className={styles.play}>
+                <Link href='/QuizPannel'><button className={styles.play}>
                         <div>Play Now</div>
                         <img src='arrow-right.svg' className={styles.angle}/>
-                </button>
+                </button></Link>
             </div>
         </div>
     );

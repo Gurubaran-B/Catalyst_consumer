@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ModalContext } from "./Layout";
 import { useRouter } from 'next/router'
 import styles from '../styles/Card.module.css'
-import reactDom from "react-dom";
 
 function Card({}) {
 

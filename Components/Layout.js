@@ -13,7 +13,7 @@ function Layout({children}) {
     return(
     
         <div className={styles.container}>
-            {/* <Header/> */}
+            <Header/>
             <ModalContext.Provider value={[showModal, setShowModal]}>
                 <motion.div>
                     <Modal />

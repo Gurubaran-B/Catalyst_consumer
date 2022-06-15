@@ -4,6 +4,8 @@ import GameCard from '../Components/GameCard.js'
 import Progressbar from '../Components/Progressbar.js'
 
 export default function Experience() {
+
+
   return (
     <motion.div
     initial={{opacity:0}}
