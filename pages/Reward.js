@@ -10,7 +10,7 @@ function Reward() {
                     <div className={styles["inner"] + " " + styles["circle"]} >
                         <div className={styles.field}>
                             <div className={styles.ellipse}><img src='Ellipse.svg'/></div>
-                            <div className={styles.emoj}>💪🏻</div>
+                            <div className={styles.emoj}><img src='muscle.gif'/></div>
                             <div className={styles.globe}><img src='Globe.svg'/></div>
                             <div className={styles.cube}><img src='Cube.svg'/></div>
                         </div>

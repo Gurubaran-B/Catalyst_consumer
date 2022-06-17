@@ -12,7 +12,7 @@ function RewardCard({}) {
             <div className={styles.title}>Congratulations!</div>
 
             <div className={styles.description}>You have won muscle badge as a reward.</div>
-
+            
             <div className={styles.badgeProgress}>
                 <div className={styles.scoreStreak}><img src="score_board.svg"/></div>
                 <div  className={styles.progress}><Progressbar percent ={percent}/></div>

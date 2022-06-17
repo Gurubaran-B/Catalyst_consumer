@@ -42,9 +42,13 @@
     background-color: #FFEEEC;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    font-size: 64px;
+    align-items: baseline;
     position: absolute;
+}
+
+.emoj img {
+    width: 100px;
+    height: 100px;
 }
 
 .ellipse {
