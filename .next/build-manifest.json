@@ -15,15 +15,15 @@
     "static/development/_middlewareManifest.js"
   ],
   "pages": {
-    "/": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/index.js"
-    ],
     "/QuizPannel": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/QuizPannel.js"
+    ],
+    "/Reward": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/Reward.js"
     ],
     "/_app": [
       "static/chunks/webpack.js",

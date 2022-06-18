@@ -42,14 +42,12 @@
     background-color: #FFEEEC;
     display: flex;
     justify-content: space-around;
-    align-items: baseline;
+    align-items: center;
     position: absolute;
+    padding-bottom: 25px;
 }
 
-.emoj img {
-    width: 100px;
-    height: 100px;
-}
+
 
 .ellipse {
     display: flex;
