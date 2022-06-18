@@ -35,6 +35,11 @@
     width: 100%;
 }
 
+.fieldElements {
+    height: 100%;
+    width: 100%;
+}
+
 .emoj {
     width: 150px;
     height: 150px;
