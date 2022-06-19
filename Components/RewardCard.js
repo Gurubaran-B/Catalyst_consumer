@@ -7,7 +7,6 @@ function RewardCard({}) {
 
     let percent = 50;
     
- 
     return (
         <div className={styles.card}>
 

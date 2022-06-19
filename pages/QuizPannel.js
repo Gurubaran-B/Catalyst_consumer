@@ -1,4 +1,5 @@
 import React, {useState, useContext} from "react";
+import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
 import { HeaderContext } from "../Components/Layout";
 import Progressbar from '../Components/Progressbar.js';
@@ -9,6 +10,8 @@ import Reward from "./Reward.js";
 
 function Quiz()
 {
+    const router = useRouter();
+
     let testData = {
         question_and_options: [
                         {
@@ -152,7 +155,7 @@ function Quiz()
         }
     else 
         {
-            return (<Reward/>);
+            router.push('/Reward');
         };
 }
 
