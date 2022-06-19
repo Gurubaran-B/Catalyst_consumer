@@ -18,7 +18,7 @@ function Reward() {
       };
 
       const glitter = {
-        loop: false,
+        loop: true,
         autoplay: true,
         animationData: sparkle,
         rendererSettings: {
