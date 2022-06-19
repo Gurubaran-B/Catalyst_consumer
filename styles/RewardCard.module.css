@@ -5,7 +5,24 @@
     color:black;
     text-align: left;
     border-radius: 15px;
-    padding: 20px;
+    position: relative;
+    display: flex; 
+    justify-content: space-around;
+    padding: 25px;
+}
+
+.cardContent {
+    z-index: 20;
+    padding: 25px;
+    position: absolute;
+}
+
+.lottie {
+    z-index: 10;
+    top:5px;
+    position: absolute;
+    opacity: 1;
+
 }
 
 .title {
@@ -13,12 +30,16 @@
     text-align: center;
     padding: 20px;
     border-bottom: 1px solid black;
+    z-index: 10;
 }
+
+
 
 .description {
     padding: 20px;
     text-align: center;
     font-size: 20px;
+
 }
 
 .badgeProgress {
@@ -28,18 +49,22 @@
     align-items: center;
     padding: 20px;
     margin-bottom: 10px;
+
 }
 
 .scoreStreak img {
     height: 20px;
+
 }
 
 .progress {
     width: 60%;
+
 }
 
 .status {
     font-size: 16px;
+
 }
 
 .explore {
@@ -54,4 +79,5 @@
     border:none;
     border-radius: 10px;
     padding: 15px;
+
 }
