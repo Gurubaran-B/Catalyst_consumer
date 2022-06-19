@@ -8,21 +8,24 @@
 
 .circle {
     border-radius: 50%; 
-    border: 1px solid black;
+    /* border: 1px solid black; */
     display: flex;
     justify-content: space-around;
     align-items: center;
+    box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.25);
     
 }
 
 .outer {
     height: 350px;
     width: 350px;
+    background: linear-gradient(135deg, rgba(196, 174, 174, 0.22), rgba(255,255,255,0.25));
 }
 
 .inner {
     height: 250px;
     width: 250px;
+    background: linear-gradient(135deg, rgba(196, 174, 174, 0.22), rgba(255,255,255,0.25));
 }
 
 .field {
@@ -44,12 +47,14 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background-color: #FFEEEC;
+    background-color: #ffeeec;
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
     padding-bottom: 25px;
+    box-shadow: 10px 10px 12px 0px rgba(0, 0, 0, 0.25);
+
 }
 
 
@@ -57,20 +62,21 @@
 .ellipse {
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
+    height: 100%;
     position: absolute;
 }
 
 .globe {
     position: absolute;
     left: 60%;
-    top: 10%;
+    top: 0;
 }
 
 .cube {
     position: absolute;
-    right: 50%;
-    bottom: 10%;
+    right: 60%;
+    bottom: 0;
 }
 
 .bottom {
