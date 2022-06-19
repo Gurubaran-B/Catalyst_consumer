@@ -42,13 +42,13 @@ function Reward() {
                 <motion.div 
                     className={styles["outer"] + " " + styles["circle"]}
                     initial={{scale: 0.9}}
-                    animate={{scale: 1}}
+                    animate={{scale: 1.3}}
                     transition={{duration:1.2, scale: { type: "spring", stiffness: 250, mass: 3.5, bounce: 10 }}}>
 
                     <motion.div 
                         className={styles["inner"] + " " + styles["circle"]}
-                        initial={{scale: 1.2}}
-                        animate={{scale: 1}}
+                        initial={{scale: 1.2, boxShadow: '0px 0px 25px 5px rgba(255, 252, 58, 0.3), 0px 0px 25px 5px rgba(253, 158, 48, 0.3)' }}
+                        animate={{scale: 1, boxShadow: '0px 0px 25px 5px rgba(63, 61, 61, 0.3)' }}
                         transition={{duration:1, scale: { type: "spring", stiffness: 250, mass: 3.5, bounce: 10 }}}> 
                         
                         <div className={styles.field}>
@@ -60,7 +60,7 @@ function Reward() {
                             <motion.div
                                 className={styles.emoj}
                                 initial={{scale: 1.3}}
-                                animate={{scale: 1}}
+                                animate={{scale: 0.9}}
                                 transition={{duration:0.8, scale: { type: "spring", stiffness: 250, mass: 3.5, bounce: 10 }}}>
                                 
                                 <Lottie
@@ -80,7 +80,7 @@ function Reward() {
                                 <motion.div 
                                     className={styles.globe}
                                     initial={{scale: 1}}
-                                    animate={{scale: 0.8}}
+                                    animate={{scale: 0.6}}
                                     transition={{duration: 1}}
                                     // animate={{rotate: -360}}
                                     // transition={{loop: Infinity, duration: 10, ease: 'linear'}}
@@ -96,7 +96,7 @@ function Reward() {
                                 <motion.div 
                                     className={styles.cube}
                                     initial={{scale: 1}}
-                                    animate={{scale: 0.8}}
+                                    animate={{scale: 0.6}}
                                     transition={{duration: 1}}
                                     // animate={{rotate: 360}}
                                     // transition={{loop: Infinity, duration: 10, ease: 'linear'}}

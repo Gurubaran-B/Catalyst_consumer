@@ -5,25 +5,9 @@
     color:black;
     text-align: left;
     border-radius: 15px;
-    position: relative;
-    display: flex; 
-    justify-content: space-around;
     padding: 25px;
 }
 
-.cardContent {
-    z-index: 20;
-    padding: 25px;
-    position: absolute;
-}
-
-.lottie {
-    z-index: 10;
-    top:5px;
-    position: absolute;
-    opacity: 0.45;
-
-}
 
 .title {
     font-size: 32px;
@@ -32,8 +16,6 @@
     border-bottom: 1px solid black;
     z-index: 10;
 }
-
-
 
 .description {
     padding: 20px;
