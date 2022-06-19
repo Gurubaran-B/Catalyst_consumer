@@ -5,20 +5,24 @@ import Modal from "./Modal";
 import styles from '../styles/Layout.module.css'
 
 export const ModalContext = React.createContext();
+export const HeaderContext = React.createContext();
 
 function Layout({children}) {
 
     const [showModal, setShowModal] = useState(false);
+    const [showHeader, setShowHeader] = useState(true);
     
     return(
     
         <div className={styles.container}>
-            <Header/>
-            <ModalContext.Provider value={[showModal, setShowModal]}>
-                <motion.div>
-                    <Modal />
-                </motion.div>
-                {!showModal && children}
+            <ModalContext.Provider value={[showModal, setShowModal,]}>
+                <HeaderContext.Provider value={[ showHeader, setShowHeader]}>
+                    <Header/>
+                    <motion.div>
+                        <Modal />
+                    </motion.div>
+                    {!showModal && children}
+                </HeaderContext.Provider>
             </ModalContext.Provider>
         </div>
 

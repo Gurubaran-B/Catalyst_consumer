@@ -1,13 +1,19 @@
 import React from 'react';
 import RewardCard from '../Components/RewardCard.js'
+import { HeaderContext } from "../Components/Layout";
 import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import muscle from '../asset/Lottie/muscle.json';
 import sparkle from '../asset/Lottie/✨.json';
+import { useContext } from "react";
 
 import styles from '../styles/Reward.module.css';
 
 function Reward() {
+
+    const [ , setShowHeader] = useContext(HeaderContext);
+    
+    setShowHeader(false);
 
     const badge = {
         loop: true,
@@ -17,9 +23,6 @@ function Reward() {
           preserveAspectRatio: "xMidYMid slice"
         }
       };
-
-      
-
 
       const glitter = {
         loop: true,

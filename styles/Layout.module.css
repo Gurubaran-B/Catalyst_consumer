@@ -5,10 +5,9 @@
     font-style: normal;
     }
 
-    .container {
-      padding-top: 15px;    
+    .container { 
       background-color: #F5F7F6;
       font-family: 'Sofia';
-      height: 100vh;
+      height: 95vh;
       width: 100vw;
     }

@@ -1,9 +1,15 @@
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css'
 import GameCard from '../Components/GameCard.js'
+import { HeaderContext } from "../Components/Layout";
 import Progressbar from '../Components/Progressbar.js'
+import { useContext } from "react";
 
 export default function Experience() {
+
+  const [ , setShowHeader] = useContext(HeaderContext);
+
+  setShowHeader(true);
 
 
   return (

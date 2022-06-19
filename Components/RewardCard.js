@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link';
 import Progressbar from "./RewardProgressBar";
 import styles from '../styles/RewardCard.module.css';
 
@@ -22,10 +23,12 @@ function RewardCard({}) {
 
 
             <div>
-                <button className={styles.explore}>
-                        <div>Explore more</div>
-                        <img src='arrow-right.svg' className={styles.angle}/>
-                </button>
+                <Link href='/'>
+                    <button className={styles.explore}>
+                            <div>Explore more</div>
+                            <img src='arrow-right.svg' className={styles.angle}/>
+                    </button>
+                </Link>
             </div>
 
            

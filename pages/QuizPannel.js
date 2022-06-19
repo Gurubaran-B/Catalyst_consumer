@@ -1,5 +1,6 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import {motion, AnimatePresence} from "framer-motion";
+import { HeaderContext } from "../Components/Layout";
 import Progressbar from '../Components/Progressbar.js';
 import QuizCard from '../Components/QuizCard.js';
 import styles from '../styles/QuizPannel.module.css';
@@ -63,9 +64,13 @@ function Quiz()
     const [current, setCurrent] = useState(0);
     const [percent, setPercent] = useState(0);
     const [score, setScore] = useState(0);
-    const [minutes, setMinutes] = useState(0);
+    const [minutes, setMinutes] = useState(2);
     const [seconds, setSeconds] = useState(10);
     const [gameStatus, setGameStatus] = useState(true);
+
+    const [ , setShowHeader] = useContext(HeaderContext);
+    
+    setShowHeader(false);
 
     if (gameStatus)
         {
