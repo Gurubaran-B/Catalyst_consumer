@@ -42,3 +42,8 @@
 .inCorrectOption {
     background-color: #FF8DAF;
 }
+
+.opinion {
+    background-color: black;
+    color: white;
+}

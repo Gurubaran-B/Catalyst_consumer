@@ -47,7 +47,7 @@ function GameCard() {
             </div>
 
             <div>
-                <Link href='/QuizPannel'><button className={styles.play}>
+                <Link href='/OpinionPannel'><button className={styles.play}>
                         <div>Play Now</div>
                         <img src='arrow-right.svg' className={styles.angle}/>
                 </button></Link>
