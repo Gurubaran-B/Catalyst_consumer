@@ -1,7 +1,7 @@
 import React from "react";
-import Link from 'next/link';
 import Progressbar from "./RewardProgressBar";
 import styles from '../styles/RewardCard.module.css';
+import Explode from "./ExplodeButton";
 
 function RewardCard({}) {
 
@@ -22,12 +22,7 @@ function RewardCard({}) {
 
 
             <div>
-                <Link href='/'>
-                    <button className={styles.explore}>
-                            <div>Explore more</div>
-                            <img src='arrow-right.svg' className={styles.angle}/>
-                    </button>
-                </Link>
+                <Explode text={'Explore more'} icon={'arrow-right.svg'} routeTo={'/'}/>
             </div>
 
            

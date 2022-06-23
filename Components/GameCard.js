@@ -1,6 +1,7 @@
 import React from "react";
 import Link from 'next/link';
 import styles from '../styles/Card.module.css'
+import Explode from "./ExplodeButton";
 
 function GameCard() {
     return (
@@ -45,13 +46,10 @@ function GameCard() {
                     <div>50% Off sale Voucher</div>
                 </div>
             </div>
+            
 
-            <div>
-                <Link href='/OpinionPannel'><button className={styles.play}>
-                        <div>Play Now</div>
-                        <img src='arrow-right.svg' className={styles.angle}/>
-                </button></Link>
-            </div>
+            <Explode text={'Play Now'} icon={'arrow-right.svg'} routeTo ={'/OpinionPannel'}/>
+
         </div>
     );
 };

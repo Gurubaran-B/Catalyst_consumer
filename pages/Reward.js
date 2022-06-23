@@ -1,6 +1,6 @@
 import React from 'react';
 import RewardCard from '../Components/RewardCard.js'
-import { HeaderContext } from "../Components/Layout";
+import { HeaderContext } from "./_app";
 import Lottie from 'react-lottie';
 import { motion } from 'framer-motion';
 import muscle from '../asset/Lottie/muscle.json';

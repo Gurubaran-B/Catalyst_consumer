@@ -1,11 +1,13 @@
 import React from "react";
-import { HeaderContext } from "./Layout";
+import { HeaderContext } from "../pages/_app";
 import styles from '../styles/Header.module.css'
 import { useContext } from "react";
 
 
+
 function Header() {
-    const [showHeader, ] = useContext(HeaderContext);
+   
+    const [showHeader, setShowHeader ] = useContext(HeaderContext);
     
     return(
         <>

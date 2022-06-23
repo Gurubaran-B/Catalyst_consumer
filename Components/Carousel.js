@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import styles from '../styles/Carousel.module.css';
 
 function Carousel({children}) {
@@ -49,23 +49,27 @@ function Carousel({children}) {
 
                 {/* <div><button onClick={() => prevSlide()}>-</button></div> */}
 
-                <div className={styles.slider}>
-                {children.map((child, i) =>
-                    (<div className={styles.slide} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} key={i} style={{transform: `translateX(${(i - current) * 100}%)`}}>
-                        {child}
-                    </div>))
-                }
-                </div>
+                
+                {children && <div className={styles.slider}>
+    
+                    {!Array.isArray(children) && <div className={styles.slide} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+                        {children}
+                    </div>}
+                    {Array.isArray(children) && children.map((child, i) =>
+                        (<div className={styles.slide} onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd} key={i} style={{transform: `translateX(${(i - current) * 100}%)`}}>
+                            {child}
+                        </div>))}
+                </div>}
 
                 {/* <div><button onClick={() => nextSlide()}>+</button></div> */}
 
             </div>
 
-            <div className={styles.dots}>
+            {Array.isArray(children) && <div className={styles.dots}>
                 {children.map((_, i) => 
                     (<div className={current == i ? styles.dotActive : styles.dot} key={i} onClick={() => goTo(i)}></div>))
                 }
-            </div>
+            </div>}
 
         </div>
     );

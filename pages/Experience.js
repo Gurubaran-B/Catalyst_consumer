@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css'
 import GameCard from '../Components/GameCard.js'
-import { HeaderContext } from "../Components/Layout";
+import { HeaderContext } from "./_app";
 import Progressbar from '../Components/Progressbar.js'
 import { useContext } from "react";
 

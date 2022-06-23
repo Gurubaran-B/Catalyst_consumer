@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import React, { useContext } from "react";
-import { ModalContext } from "./Layout";
+import { ModalContext, ModalDataContext } from "../pages/_app";
 import styles from "../styles/Modal.module.css"
 
 function Modal() {
 
     const [showModal, setShowModal] = useContext(ModalContext);
+    const [showDataModal, setShowDataModal] = useContext(ModalDataContext);
 
     return (
         <>
@@ -22,7 +23,7 @@ function Modal() {
                     
                     <div className={styles.title}>Description</div>
 
-                    <div className={styles.message}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div>
+                    <div className={styles.message}>{showDataModal}</div>
                     
                     <div className={styles.okBtn}><button>Proceed</button></div>
 

@@ -1,13 +1,14 @@
 import React, {useState, useContext} from "react";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
-import { HeaderContext } from "../Components/Layout";
+import { HeaderContext } from "./_app";
+import Explode from '../Components/ExplodeButton.js'
 import Progressbar from '../Components/Progressbar.js';
 import OpinionCard from '../Components/OpinionCard.js';
 import styles from '../styles/QuizPannel.module.css';
 import Timer from "../Components/Timer.js";
 
-function Opinion()
+function Opinion(props)
 {
     const [ , setShowHeader] = useContext(HeaderContext);
     const router = useRouter();
@@ -76,7 +77,7 @@ function Opinion()
         {
             return (
                 <div className={styles.container}>
-                    <div className={styles.progress}>
+                    <div className={styles.progress2}>
                         <Progressbar percent={percent} setGameStatus={setGameStatus}/> 
                     </div>
 
@@ -129,7 +130,8 @@ function Opinion()
 
                     <div className={styles.closebtn}>
                         <img src="closeNotch.svg" />
-                        <img src="close_btn_white.svg" className={styles.close} />
+                        <Explode icon ={"close_btn_white.svg"} routeTo={"/"} className={styles.close}/>
+                        {/* <img src="close_btn_white.svg" className={styles.close} /> */}
                     </div>
                     
                 </div>

@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
-import { HeaderContext } from "../Components/Layout";
+import { HeaderContext } from "./_app";
 import Progressbar from '../Components/Progressbar.js';
 import QuizCard from '../Components/QuizCard.js';
 import styles from '../styles/QuizPannel.module.css';
