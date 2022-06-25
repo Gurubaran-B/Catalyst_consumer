@@ -130,8 +130,7 @@ function Opinion(props)
 
                     <div className={styles.closebtn}>
                         <img src="closeNotch.svg" />
-                        <Explode icon ={"close_btn_white.svg"} routeTo={"/"} className={styles.close}/>
-                        {/* <img src="close_btn_white.svg" className={styles.close} /> */}
+                        <Explode icon ={"close_btn_white.svg"} routeTo={"/"} />
                     </div>
                     
                 </div>

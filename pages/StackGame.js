@@ -1,83 +1,81 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useEffect, useContext, useState} from 'react';
 import { HeaderContext } from "./_app";
 import * as CANNON from 'cannon';
 import * as THREE from 'three'
-import { useFrame, Canvas, animated} from 'react-three-fiber'
-import { OrthographicCamera } from '@react-three/drei'
+import { useFrame, Canvas, animated} from '@react-three/fiber'
 import styles from '../styles/StackGame.module.css';
+import { motion } from 'framer-motion-3d';
+import {useAnimation} from 'framer-motion';
+
 
 function StackGame() {
 
-    // const [ , setShowHeader] = useContext(HeaderContext);
-    // setShowHeader(false);
-
-    // let html = useEffect(() =>
-    // {   
- 
-    //     const scene = new THREE.Scene();
-    //     const geometry = new THREE.BoxGeometry(3,1,3);
-    //     const material = new THREE.MeshLambertMaterial({color: 'orange'});
-    //     const mesh = new THREE.Mesh(geometry, material);
-    //     mesh.position.set(0,0,0);
-    //     scene.add(mesh);
-
-    //     const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
-    //     scene.add(ambientLight);
-
-    //     const dirLight = new THREE.DirectionalLight(0xffffff, 0.6);
-    //     dirLight.position.set(10, 20, 0);
-    //     scene.add(dirLight);
-
-    //     const width = 10;
-    //     const height = width * (window.innerHeight / window.innerWidth);
-    //     const camera = new THREE.OrthographicCamera(
-    //         width / -2, // left
-    //         width / 2, // right
-    //         height / 2, // top
-    //         height / -2, // bottom
-    //         0, // near plane
-    //         100 // far plane
-    //     );
-
-    //     camera.position.set(4,4,4);
-    //     camera.lookAt(0,0,0);
-
-    //     const renderer = new THREE.WebGLRenderer({ antialias: true });
-    //     renderer.setSize(window.innerWidth, window.innerHeight);
-    //     renderer.render(scene, camera);
-    //     // document.body.appendChild(renderer.domElement);
-
-       
-    //    return () => {<div>{renderer.domElement}</div>};
-    //    console.log()
-        
-  
-    // }, [])
-
-    function Block() {
+    const [stack, setStack]= useState([]);
+    const [Y, setY] = useState(5);
+    const [I, setI] = useState(1);
+    const [Z, setZ] = useState(0);
+    const[click, setClick] = useState(true);
+    
+    function Block(props) {
         return (
             <>
-            <boxGeometry args={[3, 1, 3]} />
-            <meshLambertMaterial attach="material" color='orange'/>
+            {<mesh position={[props.x, props.y, props.z]}>
+                <boxGeometry args={[3, 1, 3]} />
+                <meshLambertMaterial attach="material" color={props.color}/>
+            </mesh>}
             </>
         );
-
-        
     };
 
+    function Move (props) {
+        useFrame(({camera}) => { camera.position.y = props.y; return null;})
+    }
+
+   
+
+    function addLayerZ() {
+
+        setStack(oldStack => [...oldStack, 
+        <motion.mesh 
+            initial={click ? {z:-5} : false}
+            animate={{z:5}}
+            transition={{duration: 1.2, yoyo: Infinity}}>
+                <Block x ={0} y={I} z={0} color={'red'} />
+            </motion.mesh>])
+    }
+
+    console.log(Z);
+
+    function addLayerX() {
+        setClick(false);
+        setStack(oldStack => [...oldStack, 
+        <motion.mesh
+            initial={{x: 5}}
+            animate={{x: -5}}
+            transition={{duration: 1.2, yoyo: Infinity}}>
+                <Block x ={0} y={I} z={0} color={'blue'} />
+            </motion.mesh>]);
+    }
+
+    
     return (
-        <div className={styles.StackGame}>
-            <Canvas orthographic camera={{ zoom: 75, position: [4, 4, 4], lookat: [0,0,0] }}>
-                <OrthographicCamera position={[4,4,4]} lookAt={[0,0,0]}/>
-                <ambientLight color="0xffffff" intensity={0.6} />
-                <directionalLight color="0xffffff" position={[10, 20, 0]} intensity={0.6} />
-                <mesh position={[0,0,0]}>
-                    <Block/>
-                </mesh>
-            </Canvas>
+        <div className={styles.StackGame} >
+                <Canvas orthographic camera={{position: [5,5,5], zoom:60}} >
+                    <ambientLight color="0xffffff" intensity={0.6} />
+                    <directionalLight color="0xffffff" position={[10, 20, 0]} intensity={0.6} />
+                        <mesh onClick={()=> {setI( I + 1) ;(stack.length % 2 == 0) ? addLayerZ() : addLayerX() ; setY(Y + 1)}}>
+                            {stack}
+                            <mesh><Block x ={0} y={0} z={0} color={'orange'} /></mesh>
+                            
+                        </mesh>
+                        
+                        <Move y={Y}/>
+                </Canvas>
         </div>
 
     );
+
+};
 
     
 
@@ -489,6 +487,6 @@ function StackGame() {
     //     </div>
     // );
 
-};
+
 
 export default StackGame;

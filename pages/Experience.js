@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion';
 import styles from '../styles/Home.module.css'
-import GameCard from '../Components/GameCard.js'
-import { HeaderContext } from "./_app";
-import Progressbar from '../Components/Progressbar.js'
+import ExperienceCard from '../Components/ExperienceCard.js'
+import { HeaderContext, ExperienceContext } from "./_app";
 import { useContext } from "react";
 
 export default function Experience() {
 
   const [ , setShowHeader] = useContext(HeaderContext);
-
+  const[experience, setExperience] = useContext(ExperienceContext);
   setShowHeader(true);
-
 
   return (
     <motion.div
@@ -39,7 +37,7 @@ export default function Experience() {
 
       <div className={styles.title_display}>
 
-        <h1>Wild Workout Week 2</h1>
+        <h1>{experience.campaign_setup.campaign_name}</h1>
 
         <div className={styles.buttons}>
 
@@ -67,8 +65,10 @@ export default function Experience() {
           <div><h2>Featured</h2></div>
         </div>
 
-        <GameCard />
-  
+        <div className={styles.experienceList}>
+             {experience.experiences.map(() => <div className={styles.experienceElement}><ExperienceCard /></div>)}
+        </div>
+
       </div>
 
     </motion.div>

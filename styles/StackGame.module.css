@@ -1,5 +1,6 @@
 .StackGame {
   height: 100vh;
+  width: 100vw;
 }
 .container {
   margin: 0;
@@ -45,6 +46,10 @@ body:hover .instructions {
   font-weight: bold;
   top: 30px;
   right: 30px;
+}
+
+.block {
+  height: 300px;
 }
 
 

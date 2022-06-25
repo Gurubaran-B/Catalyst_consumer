@@ -1,19 +1,15 @@
-import React, { useState, useContext } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useContext } from "react";
 import { ModalContext, ModalDataContext } from "../pages/_app";
-import { useRouter } from 'next/router'
 import styles from '../styles/Card.module.css'
 import Explode from "./ExplodeButton";
 
-function Card(props) {
 
-    const router = useRouter();
+function Card(props) {
 
     const [showModal, setShowModal] = useContext(ModalContext);
     const [description, setDescription] = useContext(ModalDataContext);
     const [rules, setRules] = useContext(ModalDataContext);
-    const [detonate, setDetonate] = useState(false);
-    
+
     return (
         <div className={styles.card}>
 
@@ -54,7 +50,7 @@ function Card(props) {
                     <button><img src='award.svg' className={styles.award}/></button>
                 </div>
 
-                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'} routeTo={'/Experience'}/></div>
+                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'} experience={props.experience}  routeTo={"/Experience"}/></div>
                
 
             </div>
