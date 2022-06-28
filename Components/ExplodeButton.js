@@ -1,16 +1,16 @@
 import React , {useState, useContext} from "react";
+import { ExperienceContext } from "../pages/_app";
 import {motion, AnimatePresence} from "framer-motion"
 import { useRouter } from 'next/router'
 import styles from '../styles/ExplodeButton.module.css'
-import {ExperienceContext } from "../pages/_app";
 
 
 
 function Explode(props) {
 
     const router = useRouter();
+    const [experience ,setExperience] = useContext(ExperienceContext);
     const [detonate, setDetonate] = useState(false);
-    const [experience, setExperience] = useContext(ExperienceContext);
     
     return (
         <div className={styles.exploder}>   
@@ -18,9 +18,13 @@ function Explode(props) {
                 {!detonate && <motion.button
                                 exit={{width : '35px', color:"black", overflow: "hidden"}} 
                                 transition={{duration:0.3}}
-                                className={styles.explore} onClick={() => {setDetonate(true); props.experience && setExperience(props.experience); setTimeout( () => router.push(props.routeTo), 800);}}> 
-                                    {<div>{props.text}</div>}
-                                    {<img src={props.icon} className={styles.angle}/>}
+                                className={styles.explore} 
+                                onClick={() => {
+                                    setDetonate(true); 
+                                    setExperience([props.experience]) ;
+                                    setTimeout( () => router.push({pathname : props.routeTo, query: {_id : props._id}}), 800);}}> 
+                                    <div>{props.text}</div>
+                                    <img src={props.icon} className={styles.angle}/>
                                 </motion.button>}
             </AnimatePresence> 
                     

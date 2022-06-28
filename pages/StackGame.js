@@ -4,17 +4,31 @@ import * as CANNON from 'cannon';
 import * as THREE from 'three'
 import { useFrame, Canvas, animated} from '@react-three/fiber'
 import styles from '../styles/StackGame.module.css';
-import { motion } from 'framer-motion-3d';
-import {useAnimation} from 'framer-motion';
+import {motion} from 'framer-motion-3d'
+import {useMotionValue, useAnimation} from 'framer-motion'
+
+
 
 
 function StackGame() {
 
     const [stack, setStack]= useState([]);
+    const [click, setClick] = useState(true);
     const [Y, setY] = useState(5);
     const [I, setI] = useState(1);
     const [Z, setZ] = useState(0);
-    const[click, setClick] = useState(true);
+    const xTraverse = useMotionValue(-5);
+    const zTraverse = useMotionValue(5);
+
+    useEffect(()=>{
+        
+},[])
+
+    
+
+    
+   
+
     
     function Block(props) {
         return (
@@ -31,46 +45,62 @@ function StackGame() {
         useFrame(({camera}) => { camera.position.y = props.y; return null;})
     }
 
+    
    
 
     function addLayerZ() {
-
         setStack(oldStack => [...oldStack, 
-        <motion.mesh 
-            initial={click ? {z:-5} : false}
-            animate={{z:5}}
+        <motion.mesh
+            position-z={zTraverse}
+            animate={{ z:-5 }}
             transition={{duration: 1.2, yoyo: Infinity}}>
                 <Block x ={0} y={I} z={0} color={'red'} />
             </motion.mesh>])
     }
 
-    console.log(Z);
 
     function addLayerX() {
-        setClick(false);
         setStack(oldStack => [...oldStack, 
         <motion.mesh
-            initial={{x: 5}}
-            animate={{x: -5}}
+            position-x={click ? xTraverse : xTraverse.current}
+            animate={{ x: click ?  5 : xTraverse.current }} 
             transition={{duration: 1.2, yoyo: Infinity}}>
                 <Block x ={0} y={I} z={0} color={'blue'} />
-            </motion.mesh>]);
+            </motion.mesh>])
     }
 
-    
+    function addLayer() {
+       
+        if ((stack.length % 2) == 0)
+        {
+            addLayerX();
+            console.log(zTraverse)
+            setClick(!click);
+        }
+        else 
+        {
+            addLayerZ();
+            console.log(xTraverse)
+            setClick(!click);
+
+        }
+        
+    }
+
+
     return (
-        <div className={styles.StackGame} >
+        <div className={styles.StackGame} onClick={()=> {setI( I + 1) ; addLayer() ; setY(Y + 1)}} >
                 <Canvas orthographic camera={{position: [5,5,5], zoom:60}} >
                     <ambientLight color="0xffffff" intensity={0.6} />
                     <directionalLight color="0xffffff" position={[10, 20, 0]} intensity={0.6} />
-                        <mesh onClick={()=> {setI( I + 1) ;(stack.length % 2 == 0) ? addLayerZ() : addLayerX() ; setY(Y + 1)}}>
+                        <mesh>
                             {stack}
-                            <mesh><Block x ={0} y={0} z={0} color={'orange'} /></mesh>
-                            
+                            <mesh><Block x ={0} y={0} z={0} color={'orange'} /></mesh> 
                         </mesh>
-                        
                         <Move y={Y}/>
                 </Canvas>
+
+                
         </div>
 
     );

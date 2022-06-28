@@ -40,9 +40,6 @@ function Card(props) {
 
             </div> 
 
-
-            
-
             <div className={styles.buttons_container}>      
 
                 <div className={styles.buttons}>
@@ -50,7 +47,7 @@ function Card(props) {
                     <button><img src='award.svg' className={styles.award}/></button>
                 </div>
 
-                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'} experience={props.experience}  routeTo={"/Experience"}/></div>
+                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'} experience={props.experience} _id={props._id}  routeTo={`campaigns/Experience`}/></div>
                
 
             </div>

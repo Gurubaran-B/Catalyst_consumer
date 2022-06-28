@@ -1,4 +1,4 @@
-import React, {useState, useContext} from "react";
+import React, {useState, useContext, useEffect} from "react";
 import Header from '../Components/Header'
 import Layout from '../Components/Layout'
 import '../styles/globals.css';
@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
     <ModalDataContext.Provider value={[description, setDescription, rules, setRules ]}>
         <ModalContext.Provider value={[showModal, setShowModal]}>
           <HeaderContext.Provider value={[ showHeader, setShowHeader]}>
-            <ExperienceContext.Provider value={[ experience, setExperience]}>
+            <ExperienceContext.Provider value={[ experience, setExperience ]}>
               <Layout>
                 <div className="app">
                 <Header/>
