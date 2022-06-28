@@ -1,14 +1,9 @@
-import React, { useContext } from "react";
-import { ModalContext, ModalDataContext } from "../pages/_app";
+import React, { useState } from "react";
 import styles from '../styles/Card.module.css'
 import Explode from "./ExplodeButton";
 
 
 function Card(props) {
-
-    const [showModal, setShowModal] = useContext(ModalContext);
-    const [description, setDescription] = useContext(ModalDataContext);
-    const [rules, setRules] = useContext(ModalDataContext);
 
     return (
         <div className={styles.card}>
@@ -28,12 +23,12 @@ function Card(props) {
 
             <div className={styles.modal_buttons}>
 
-                <button onClick={() => {setShowModal(true); setDescription(props.description) }}>
+                <button onClick={() => {props.setShowModal(true); props.setDescription(props.description) }}>
                     <div>Description</div>
                     <img src='angle-right.svg' className={styles.angle}/>
                 </button>
 
-                <button onClick={() => {setShowModal(true); setDescription(props.instruction)}}>
+                <button onClick={() => {props.setShowModal(true); props.setDescription(props.instruction)}}>
                     <div>Instructions</div>
                     <img src='angle-right.svg' className={styles.angle}/>
                 </button>
@@ -47,7 +42,7 @@ function Card(props) {
                     <button><img src='award.svg' className={styles.award}/></button>
                 </div>
 
-                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'} experience={props.experience} _id={props._id}  routeTo={`campaigns/Experience`}/></div>
+                <div className={styles.play}><Explode text={'Explore'} icon={'arrow-right.svg'}  _id={props._id}  routeTo={`Experience`}/></div>
                
 
             </div>

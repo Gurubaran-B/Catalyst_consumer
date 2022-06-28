@@ -1,12 +1,11 @@
-import React, {useState, useContext} from "react";
+import React, {useState} from "react";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
-import { HeaderContext } from "./_app";
 import Progressbar from '../Components/Progressbar.js';
 import QuizCard from '../Components/QuizCard.js';
 import styles from '../styles/QuizPannel.module.css';
 import Timer from "../Components/Timer.js";
-import Reward from "./Reward.js";
+
 
 function Quiz()
 {
@@ -70,10 +69,6 @@ function Quiz()
     const [minutes, setMinutes] = useState(2);
     const [seconds, setSeconds] = useState(10);
     const [gameStatus, setGameStatus] = useState(true);
-
-    const [ , setShowHeader] = useContext(HeaderContext);
-    
-    setShowHeader(false);
 
     if (gameStatus)
         {

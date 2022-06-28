@@ -1,5 +1,4 @@
-import React , {useState, useContext} from "react";
-import { ExperienceContext } from "../pages/_app";
+import React , {useState} from "react";
 import {motion, AnimatePresence} from "framer-motion"
 import { useRouter } from 'next/router'
 import styles from '../styles/ExplodeButton.module.css'
@@ -9,7 +8,6 @@ import styles from '../styles/ExplodeButton.module.css'
 function Explode(props) {
 
     const router = useRouter();
-    const [experience ,setExperience] = useContext(ExperienceContext);
     const [detonate, setDetonate] = useState(false);
     
     return (
@@ -21,7 +19,6 @@ function Explode(props) {
                                 className={styles.explore} 
                                 onClick={() => {
                                     setDetonate(true); 
-                                    setExperience([props.experience]) ;
                                     setTimeout( () => router.push({pathname : props.routeTo, query: {_id : props._id}}), 800);}}> 
                                     <div>{props.text}</div>
                                     <img src={props.icon} className={styles.angle}/>

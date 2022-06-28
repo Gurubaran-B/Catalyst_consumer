@@ -1,19 +1,15 @@
-import React, {useState, useContext} from "react";
+import React, {useState} from "react";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
-import { HeaderContext } from "./_app";
 import Explode from '../Components/ExplodeButton.js'
 import Progressbar from '../Components/Progressbar.js';
 import OpinionCard from '../Components/OpinionCard.js';
 import styles from '../styles/QuizPannel.module.css';
-import Timer from "../Components/Timer.js";
 
 function Opinion(props)
 {
-    const [ , setShowHeader] = useContext(HeaderContext);
     const router = useRouter();
-    setShowHeader(false);
-
+   
     let testData = {
         question_and_options: [
                         {

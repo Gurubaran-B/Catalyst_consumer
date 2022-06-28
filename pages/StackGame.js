@@ -1,5 +1,5 @@
-import React, {useEffect, useContext, useState} from 'react';
-import { HeaderContext } from "./_app";
+import React, {useEffect, useState} from 'react';
+
 import * as CANNON from 'cannon';
 import * as THREE from 'three'
 import { useFrame, Canvas, animated} from '@react-three/fiber'
