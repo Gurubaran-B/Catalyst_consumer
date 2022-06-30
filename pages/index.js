@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-
 import styles from '../styles/Home.module.css'
 import Card from '../Components/Card.js'
 import Carousel from '../Components/Carousel'
@@ -52,7 +51,7 @@ export default function Home() {
 
   return (
     <>
-    {!showModal && <div>
+    {!showModal && <>
       <Header/>
       <div className={styles.main}>
         
@@ -68,7 +67,7 @@ export default function Home() {
 
           <div className={styles.carousel}>
             <Carousel>
-              {campaigns.map((data) => 
+              {campaigns.map((data, i) => 
                 <Card title={data.campaign_setup.campaign_name}
                       description = {data.campaign_setup.campaign_description}
                       instruction = {data.campaign_setup.campaign_goal_description}
@@ -76,12 +75,14 @@ export default function Home() {
                       key={data.campaign_setup._id}
                       setShowModal={setShowModal}
                       setDescription={setDescription}
+                      total={campaigns.length}
+                      current={i + 1}
                       />)}   
             </Carousel>
           </div>
         </div>
       </div>
-    </div>}
+    </>}
 
     {showModal && <Modal setShowModal={setShowModal} description={description}/>}
     </>   

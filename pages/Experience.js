@@ -5,19 +5,28 @@ import styles from '../styles/Home.module.css'
 import ExperienceCard from '../Components/ExperienceCard.js'
 import { useEffect, useState} from "react";
 import Header from '../Components/Header';
+import Modal from '../Components/Modal';
 
 
 export default function Experience() {
-  const { query } = useRouter();
-  
-  
-  const [id , setId] = useState(query._id)
 
+  const { query, isReady } = useRouter();
   const[experience, setExperience] = useState([])
+  const[locate, setLocate] = useState();
+  const[max, setMax] = useState();
+  const [showModal, setShowModal] = useState(false);
+  const [description, setDescription] = useState();
   
-  
+  function prevCampaign() {
+    (locate <= 0) ? setLocate(experience.length - 1) : setLocate(locate - 1);
+  };
 
-  const getExperienceData = function () {
+  function nextCampaign() {
+      (locate == (experience.length - 1)) ? setLocate(0) : setLocate(locate + 1);
+  };
+
+
+   function getExperienceData() {
     axios({
       url: "http://localhost:4002/api/v2/experience/getAllLiveExperience?brand_id=628dbaf1d79282edd4d061e5",
       method: "GET",})
@@ -39,71 +48,59 @@ export default function Experience() {
         return(acc);
         },[])
 
-
-        let exp = [];
-        holder.map((el) => {
-          if ((el.campaign_setup._id) == (id))
+        holder.map((el, i) => {
+          if ((el.campaign_setup._id) == (query._id))
           {
-            exp.push(el)
+            setLocate(i)
           }
         })
 
-        setExperience(exp)})
+        setMax(holder.length)
+        setExperience(holder)})
       .catch((err) => {console.log(err)});
   }
 
-  useEffect(() =>
-  {
-    getExperienceData();
-  },[]);
+
+  useEffect(() => {
+    (isReady) && getExperienceData();
+  },[isReady]);
         
   
   return (
     <>
-      <Header/>
-
+      {!showModal && <><Header/>
       <motion.div
-      initial={{opacity:0}}
-      animate={{opacity:1}}
-      transition={{duration:0.6}}
-      className={styles.main_experience}>
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{duration:0.6}}
+        className={styles.main_experience}>
 
         <div className={styles.container_experience}>
 
-          <button className={styles.next}><img src='/Arrow 1.svg'/></button>
+          <button className={styles.next} onClick={() => prevCampaign()} ><img src='/Arrow 1.svg'/></button>
 
           <div className={styles.halo_container}>
-
             <div><img src='/Group 20.svg' className={styles.halo}/></div>
-
             <div className={styles.svg_container}><img src='/emoj.svg' className={styles.svg} /></div>
-
             <div><img src='/Group 19.svg' className={styles.halo}/></div>
-
           </div>
 
-          <button className={styles.next}><img src='/Arrow 2.svg'/></button>
+          <button className={styles.next} onClick={() => nextCampaign()}><img src='/Arrow 2.svg'/></button>
 
         </div>
 
         <div className={styles.title_display}>
 
-          <h1>{experience[0]?.campaign_setup?.campaign_name}</h1>
+          <h1>{experience[locate]?.campaign_setup?.campaign_name}</h1>
 
           <div className={styles.buttons}>
-
             <button><img src='/score_board.svg' className={styles.score}/></button>
-
             <button><img src='/award.svg' className={styles.award}/></button>
-
           </div>
 
           <div className={styles.container_description}>
-
-            <div><u>Description</u></div>
-
-            <div><u>Instructions</u></div>
-
+            <div onClick={() => {setShowModal(true); setDescription(experience[locate]?.campaign_setup?.campaign_description) }}><u>Description</u></div>
+            <div onClick={() => {setShowModal(true); setDescription(experience[locate]?.campaign_setup?.campaign_goal_description) }}><u>Instructions</u></div>
           </div>
 
         </div>
@@ -117,12 +114,22 @@ export default function Experience() {
           </div>
 
           <div className={styles.experienceList}>
-              {experience[0]?.experiences?.map(() => <div className={styles.experienceElement}><ExperienceCard /></div>)}
+              {experience[locate]?.experiences?.map((exp) => 
+                  <div className={styles.experienceElement} key={exp._id}>
+                    <ExperienceCard
+                    title={exp.experience_name}
+                    description={exp.experience_short_description}
+                    maxAttepmt={exp.max_attempts}
+                    rules={exp.experience_rules}
+                    type={exp.experience_type} 
+                    setShowModal={setShowModal}
+                    setDescription={setDescription}/>
+                </div>)}
           </div>
-
         </div>
 
-      </motion.div> 
+      </motion.div></>} 
+      {showModal && <Modal setShowModal={setShowModal} description={description}/>}
     </>
   );
 };

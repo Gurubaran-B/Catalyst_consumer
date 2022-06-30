@@ -2,14 +2,21 @@ import React from "react";
 import styles from '../styles/Card.module.css'
 import Explode from "./ExplodeButton";
 
-function ExperienceCard() {
+
+
+function ExperienceCard(props) {
+
+    let type = props.type.toLowerCase();
+    const str = type.charAt(0).toUpperCase() + type.slice(1);
+    
+    
     return (
         <div className={styles.card}>
 
             <div className={styles.title_container}>
                 <div className={styles.card_title}>
-                    <div className={styles.title_description}>Quiz Experience</div>
-                    <div><h2>Quiz about the diet forms </h2></div>
+                    <div className={styles.title_description}>{`${str} Experience`}</div>
+                    <div><h2>{props.title}</h2></div>
                 </div>
                 
                 <div className={styles.emoj_container}>
@@ -18,12 +25,12 @@ function ExperienceCard() {
             </div>
 
             <div className={styles.modal_buttons}>
-                <button>
+                <button onClick={() => {props.setShowModal(true); props.setDescription(props.description) }}>
                     <div>About Experience</div>
                     <img src='/angle-right.svg' className={styles.angle}/>
                 </button>
 
-                <button>
+                <button onClick={() => {props.setShowModal(true); props.setDescription(props.rules)}}>
                     <div>Rules</div>
                     <img src='/angle-right.svg' className={styles.angle}/>
                 </button>
@@ -37,7 +44,7 @@ function ExperienceCard() {
 
                 <div className={styles.description}>
                     <div><img src="/Pulse.svg"/></div>
-                    <div>2/3 Attempts Left</div>
+                    <div>2/{props.maxAttepmt} Attempts Left</div>
                 </div>
 
                 <div className={styles.description}>
@@ -47,7 +54,8 @@ function ExperienceCard() {
             </div>
             
 
-            <Explode text={'Play Now'} icon={'arrow-right.svg'} routeTo ={'/OpinionPannel'}/>
+
+            <Explode text={'Play Now'} icon={'arrow-right.svg'} routeTo ={`/${str}Pannel`}/>
 
         </div>
     );

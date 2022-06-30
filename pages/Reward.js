@@ -9,11 +9,6 @@ import Header from '../Components/Header.js';
 
 function Reward() {
     
-
-    const [ , setShowHeader] = useContext(HeaderContext);
-    
-    setShowHeader(false);
-
     const badge = {
         loop: true,
         autoplay: true,

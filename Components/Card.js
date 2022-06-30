@@ -11,7 +11,7 @@ function Card(props) {
             <div className={styles.title_container}>
 
                 <div className={styles.card_title}>
-                    <div className={styles.title_description}>Campaigns 1/3</div>
+                    <div className={styles.title_description}>{`Campaigns ${props.current}/${props.total}`}</div>
                     <div><h2>{props.title}</h2></div>
                 </div>
 
