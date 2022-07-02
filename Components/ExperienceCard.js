@@ -55,7 +55,7 @@ function ExperienceCard(props) {
             
 
 
-            <Explode text={'Play Now'} icon={'arrow-right.svg'} routeTo ={`/${str}Pannel`}/>
+            <Explode text={'Play Now'} icon={'arrow-right.svg'} _id={props._id} routeTo ={`/${str}Pannel`}/>
 
         </div>
     );

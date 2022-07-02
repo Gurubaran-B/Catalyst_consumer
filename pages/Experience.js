@@ -16,7 +16,60 @@ export default function Experience() {
   const[max, setMax] = useState();
   const [showModal, setShowModal] = useState(false);
   const [description, setDescription] = useState();
+
+  useEffect(() => { (isReady) && getExperienceData(); },[isReady]);
   
+   function getExperienceData() {
+    axios({
+      url: "http://localhost:4002/api/v2/experience/getAllLiveExperience?brand_id=628dbaf1d79282edd4d061e5",
+      method: "GET",
+      headers: { Authorization : `Bearer ${localStorage.getItem("token")}`}})
+      .then((res) => {
+        if(Array.isArray(res.data.experiences)){
+          let holder = dataAggregate(res.data.experiences);
+          setExperience(holder);
+          holder.map((el, i) => {
+            if ((el.campaign_setup._id) == (query._id))
+            {
+              setLocate(i)
+            }
+          })
+
+        } else {
+            let buffer = [res.data.experience]
+            let holder = dataAggregate(buffer);
+            setExperience(holder)
+            holder.map((el, i) => {
+              if ((el.campaign_setup._id) == (query._id))
+              {
+                setLocate(i)
+              }
+            })
+        }
+        setMax(experience.length)})
+      .catch((err) => {console.log(err)});
+  }
+
+  function dataAggregate (result) {
+    let data = result?.reduce((acc, curr) => {
+      let existing_obj = acc.find(i => i.campaign_setup._id == curr.brand_campaign_associated._id)
+
+      if(existing_obj)
+        {
+          existing_obj.experiences.push(curr)
+        }
+      else
+        {
+            let obj = {}
+            obj.campaign_setup = curr.brand_campaign_associated
+            obj.experiences = [curr]
+            acc.push(obj)
+        }
+      return(acc);
+      },[])
+    return (data);
+  }
+
   function prevCampaign() {
     (locate <= 0) ? setLocate(experience.length - 1) : setLocate(locate - 1);
   };
@@ -24,48 +77,7 @@ export default function Experience() {
   function nextCampaign() {
       (locate == (experience.length - 1)) ? setLocate(0) : setLocate(locate + 1);
   };
-
-
-   function getExperienceData() {
-    axios({
-      url: "http://localhost:4002/api/v2/experience/getAllLiveExperience?brand_id=628dbaf1d79282edd4d061e5",
-      method: "GET",})
-      .then((res) => {
-        let holder = res.data.experiences.reduce((acc, curr) => {
-        let existing_obj = acc.find(i => i.campaign_setup._id == curr.brand_campaign_associated._id)
-
-        if(existing_obj)
-          {
-            existing_obj.experiences.push(curr)
-          }
-        else
-          {
-              let obj = {}
-              obj.campaign_setup = curr.brand_campaign_associated
-              obj.experiences = [curr]
-              acc.push(obj)
-          }
-        return(acc);
-        },[])
-
-        holder.map((el, i) => {
-          if ((el.campaign_setup._id) == (query._id))
-          {
-            setLocate(i)
-          }
-        })
-
-        setMax(holder.length)
-        setExperience(holder)})
-      .catch((err) => {console.log(err)});
-  }
-
-
-  useEffect(() => {
-    (isReady) && getExperienceData();
-  },[isReady]);
-        
-  
+         
   return (
     <>
       {!showModal && <><Header/>
@@ -120,6 +132,7 @@ export default function Experience() {
                     title={exp.experience_name}
                     description={exp.experience_short_description}
                     maxAttepmt={exp.max_attempts}
+                    _id ={exp._id}
                     rules={exp.experience_rules}
                     type={exp.experience_type} 
                     setShowModal={setShowModal}

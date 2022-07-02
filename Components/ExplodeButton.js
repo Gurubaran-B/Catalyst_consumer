@@ -14,8 +14,8 @@ function Explode(props) {
         <div className={styles.exploder}>   
             <AnimatePresence>
                 {!detonate && <motion.button
-                                
-                                exit={{width : '35px',color: "rgb(0,0,0)", overflow: "hidden"}} 
+                                style={{zIndex : '200'}}    
+                                exit={{width : '35px',color: "black", overflow: "hidden"}} 
                                 transition={{duration:0.3}}
                                 className={styles.explore} 
                                 onClick={() => {

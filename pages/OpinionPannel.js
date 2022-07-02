@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
 import Explode from '../Components/ExplodeButton.js'
@@ -6,69 +7,33 @@ import Progressbar from '../Components/Progressbar.js';
 import OpinionCard from '../Components/OpinionCard.js';
 import styles from '../styles/QuizPannel.module.css';
 
-function Opinion(props)
+function Opinion()
 {
     const router = useRouter();
-   
-    let testData = {
-        question_and_options: [
-                        {
-                            question: "Question 1",
-                            question_asset: "https://adasdsad.com/asdas",
-                            question_asset_type: "IMAGE",
-                            options: [
-                                {
-                                    option_text: "option 1",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: true,
-                                    _id: "62720860383a33b721278705"
-                                }
-                            ],
-                            _id: "62720860383a33b721278704"
-                        },
-                        {
-                            question: "Question 2",
-                            question_asset: "https://adasdsad.com/asdas",
-                            question_asset_type: "IMAGE",
-                            options: [
-                                {
-                                    option_text: "option 1",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: false,
-                                    _id: "62720860383a33b721278707"
-                                },
-                                {
-                                    option_text: "option 2",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: false,
-                                    _id: "62720860383a33b721278708"
-                                },
-                                {
-                                    option_text: "option 3",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: true,
-                                    _id: "62720860383a33b721278709"
-                                }
-                            ],
-                            _id: "62720860383a33b721278706"
-                        }
-                    ]
-    }
+    const { query, isReady } = useRouter();
+    const [experience, setExperience] = useState([]);
+
+    useEffect(() => { (isReady) && getExperienceData(); },[isReady]);
+
+    function getExperienceData() {
+        axios({
+        url: `http://localhost:4002/api/v2/experience/initiateOpinionExperience?exp_id=${query._id}`,
+        method: "GET",
+        headers: { Authorization : `Bearer ${localStorage.getItem("token")}`}})
+        .then((res) => {
+        setExperience(res.data.experience.experience_spec)})
+        .catch((err) => {console.log(err)});
+      }
     
-    let arr = testData.question_and_options;
-    let loc = 100 / arr.length;
+    let testData = experience;  
+    let arr = testData?.question_and_options;
+    let loc = 100 / arr?.length;
 
     const [current, setCurrent] = useState(0);
     const [percent, setPercent] = useState(0);
     const [score, setScore] = useState(0);
     const [gameStatus, setGameStatus] = useState(true);
     
-    
-
     if (gameStatus)
         {
             return (
@@ -85,7 +50,7 @@ function Opinion(props)
                     
                         <div className={styles.cardContainer}>
                             <div className={styles.cardStack}>   
-                                {arr.map((e, i) =>
+                                {arr?.map((e, i) =>
                                     { 
                                         return (
                                             <AnimatePresence key={e._id}>

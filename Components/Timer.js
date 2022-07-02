@@ -1,6 +1,8 @@
-import React from "react";
+import React,{ useState } from "react";
 
-function Timer({minutes, seconds, setMinutes, setSeconds, setGameStatus}) {
+function Timer({min, sec, setGameStatus}) {
+    const [minutes, setMinutes] = useState(min);
+    const [seconds, setSeconds] = useState(sec);
 
     if (seconds > 0)
         {

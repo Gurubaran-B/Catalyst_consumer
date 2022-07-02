@@ -1,4 +1,5 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
 import { useRouter } from 'next/router'
 import {motion, AnimatePresence} from "framer-motion";
 import Progressbar from '../Components/Progressbar.js';
@@ -10,65 +11,28 @@ import Timer from "../Components/Timer.js";
 function Quiz()
 {
     const router = useRouter();
-
-    let testData = {
-        question_and_options: [
-                        {
-                            question: "Question 1",
-                            question_asset: "https://adasdsad.com/asdas",
-                            question_asset_type: "IMAGE",
-                            options: [
-                                {
-                                    option_text: "option 1",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: true,
-                                    _id: "62720860383a33b721278705"
-                                }
-                            ],
-                            _id: "62720860383a33b721278704"
-                        },
-                        {
-                            question: "Question 2",
-                            question_asset: "https://adasdsad.com/asdas",
-                            question_asset_type: "IMAGE",
-                            options: [
-                                {
-                                    option_text: "option 1",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: false,
-                                    _id: "62720860383a33b721278707"
-                                },
-                                {
-                                    option_text: "option 2",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: false,
-                                    _id: "62720860383a33b721278708"
-                                },
-                                {
-                                    option_text: "option 3",
-                                    option_asset: "https://adasdsad.com/asdas",
-                                    option_asset_type: "IMAGE",
-                                    correct_option: true,
-                                    _id: "62720860383a33b721278709"
-                                }
-                            ],
-                            _id: "62720860383a33b721278706"
-                        }
-                    ]
-    }
-    
-    let arr = testData.question_and_options;
-    let loc = 100 / arr.length;
-
+    const { query, isReady } = useRouter();
+    const [experience, setExperience] = useState([]);
     const [current, setCurrent] = useState(0);
     const [percent, setPercent] = useState(0);
     const [score, setScore] = useState(0);
-    const [minutes, setMinutes] = useState(2);
-    const [seconds, setSeconds] = useState(10);
     const [gameStatus, setGameStatus] = useState(true);
+
+    useEffect(() => { (isReady) && getExperienceData(); },[isReady]);
+  
+   function getExperienceData() {
+    axios({
+      url: `http://localhost:4002/api/v2/experience/initiateQuizExperience?exp_id=${query._id}`,
+      method: "GET",
+      headers: { Authorization : `Bearer ${localStorage.getItem("token")}`}})
+      .then((res) => {
+          setExperience(res.data.experience.experience_spec)})
+      .catch((err) => {console.log(err)});
+  }
+
+    let testData = experience;  
+    let arr = testData?.question_and_options;
+    let loc = 100 / arr?.length;
 
     if (gameStatus)
         {
@@ -86,10 +50,8 @@ function Quiz()
 
                         <div className={styles.timer}>
                             <Timer 
-                                minutes= {minutes} 
-                                seconds= {seconds}
-                                setMinutes={setMinutes}
-                                setSeconds={setSeconds}
+                                min= {20} 
+                                sec= {0}
                                 setGameStatus={setGameStatus}
                             />
                         </div>
@@ -97,7 +59,7 @@ function Quiz()
                     
                         <div className={styles.cardContainer}>
                             <div className={styles.cardStack}>   
-                                {arr.map((e, i) =>
+                                {arr?.map((e, i) =>
                                     { 
                                         return (
                                             <AnimatePresence key={e._id}>
