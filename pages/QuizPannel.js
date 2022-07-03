@@ -30,7 +30,8 @@ function Quiz()
       .catch((err) => {console.log(err)});
   }
 
-    let testData = experience;  
+    let testData = experience; 
+    console.log(testData.time_to_complete) 
     let arr = testData?.question_and_options;
     let loc = 100 / arr?.length;
 
@@ -50,7 +51,7 @@ function Quiz()
 
                         <div className={styles.timer}>
                             <Timer 
-                                min= {20} 
+                                min= {2}
                                 sec= {0}
                                 setGameStatus={setGameStatus}
                             />

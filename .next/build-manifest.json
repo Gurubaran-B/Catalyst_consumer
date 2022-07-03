@@ -25,10 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/Experience.js"
     ],
-    "/OpinionPannel": [
+    "/QuizPannel": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/OpinionPannel.js"
+      "static/chunks/pages/QuizPannel.js"
     ],
     "/Reward": [
       "static/chunks/webpack.js",
